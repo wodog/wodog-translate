@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>小狗翻译</title>
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<style>
+		h2 {
+			margin-top: 50px;
+		}
+
+		.view {
+			margin-top: 40px;
+		}
+
+		input {
+			/*border: 2px solid #ccc;*/
+			outline: none;
+			padding: 4px;
+		}
+		h4 {
+			margin-top: 30px;
+		}
+		small {
+			position: fixed;
+			bottom: 4px;
+			right: 6px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="main container text-center">
+		<h2>小狗翻译</h2>
+		<div class="view">
+			<input id="text" type="text" placeholder="请输入内容" class="" autofocus>
+			<button id="translate_btn" class="btn btn-default">翻译</button>
+			<h4 id="content"></h4>
+		</div>
+		<small>by wodog</small>
+	</div>
+
+	<script>window.$ = window.jQuery = require('./bower_components/jquery/dist/jquery.min.js')</script>
+	<script>
+		const request = require('request');
+		const API_key = 600847748;
+		const keyfrom = 'afdsfsdfdsfdsjkh';
+		const API_addr = 'http://fanyi.youdao.com/openapi.do';
+		const doctype = 'json';
+		var is_done = false;
+
+		function translate() {
+			const q = encodeURI($('#text').val());
+			const request_url = `${API_addr}?keyfrom=${keyfrom}&key=${API_key}&type=data&doctype=${doctype}&version=1.1&q=${q}`;
+
+			request(request_url, function(err, res, body) {
+				if(err) {
+					return $('#content').text('出错了');
+				}
+				body = JSON.parse(body);
+				$('#content').text(body.translation);
+			});
+		}
+
+		$('#translate_btn').on('click', translate);
+		$('#text').on('keypress', function(e) {
+			console.log(23);
+			if(e.keyCode === 13) {
+				translate();
+				is_done = true;
+				return;
+			}
+			if (is_done) {
+				$('#text').val('');
+			}
+			is_done = false;
+		});
+	</script>
+</body>
+</html>
