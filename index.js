@@ -10,8 +10,10 @@ var mainWindow = null;
 app.on('ready', function() {
 	mainWindow = new BrowserWindow({
 		width: 270,
-		height: 360,
-		resizable: false,
+		height: 366,
+		// resizable: false,
+		icon: '/Users/zhouchongyang/Desktop/dog.jpg',
+		title: '小狗翻译'
 	});
 	mainWindow.loadURL('file://' + __dirname + '/index.html');
 	// mainWindow.webContents.openDevTools();

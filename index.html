@@ -6,18 +6,26 @@
 	<title>小狗翻译</title>
 	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<style>
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			margin: 40px auto;
+		}
 		h2 {
 			margin-top: 50px;
 		}
 
 		.view {
-			margin-top: 40px;
+			margin-top: 0px;
 		}
 
 		input {
 			/*border: 2px solid #ccc;*/
 			outline: none;
 			padding: 4px;
+			width: 140px;
 		}
 		h4 {
 			margin-top: 30px;
@@ -32,7 +40,7 @@
 <body>
 
 	<div class="main container text-center">
-		<h2>小狗翻译</h2>
+		<img src="./img/dog-1.png" alt="" >
 		<div class="view">
 			<input id="text" type="text" placeholder="请输入内容" class="" autofocus>
 			<button id="translate_btn" class="btn btn-default">翻译</button>
@@ -65,7 +73,6 @@
 
 		$('#translate_btn').on('click', translate);
 		$('#text').on('keypress', function(e) {
-			console.log(23);
 			if(e.keyCode === 13) {
 				translate();
 				is_done = true;
@@ -75,6 +82,14 @@
 				$('#text').val('');
 			}
 			is_done = false;
+		});
+
+		var num = 0;
+		$('img').on('click', function() {
+			$(this).attr('src', 'img/dog-' + (++num) + '.png');
+			if(num >= 9) {
+				num = 0;
+			}
 		});
 	</script>
 </body>

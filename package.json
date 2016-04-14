@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "package": "electron-packager ./ 小狗翻译 --platform darwin --arch x64 --app-version 1.0.0"
+    "build-windows": "electron-packager ./ --platform win32 --arch x64",
+    "build-mac": "electron-packager . --platform darwin --arch x64"
   },
   "author": "",
   "license": "ISC",
