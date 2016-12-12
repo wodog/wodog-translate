@@ -16,7 +16,7 @@
     "request": "^2.71.0"
   },
   "devDependencies": {
-    "electron-packager": "^6.0.2",
-    "electron-prebuilt": "^0.37.5"
+    "electron-packager": "^8.4.0",
+    "electron-prebuilt": "^1.4.12"
   }
 }
