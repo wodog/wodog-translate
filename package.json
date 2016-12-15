@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.71.0"
+    "request": "2.79.0"
   },
   "devDependencies": {
     "electron-packager": "^6.0.2",
